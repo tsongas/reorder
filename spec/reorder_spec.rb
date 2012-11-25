@@ -3,25 +3,25 @@ require 'reorder'
 describe "reorder" do
 	it "Should return nil if the source is out of range" do
 		array = ['a']
-		expect { array.reorder(1, 0) }.should == nil
+		array.reorder(1, 0).should == nil
 	end
 	it "Should return nil if the source is out of range" do
 		array = ['a']
-		expect { array.reorder(-2, 0) }.should == nil
+		array.reorder(-2, 0).should == nil
 	end
 
 	it "Should return nil if the destination is out of range" do
 		array = ['a']
-		expect { array.reorder(0, 1) }.should == nil
+		array.reorder(0, 1).should == nil
 	end
 	it "Should return nil if the destination is out of range" do
 		array = ['a']
-		expect { array.reorder(0, -2) }.should == nil
+		array.reorder(0, -2).should == nil
 	end
 
 	it "Should return nil if the source and destination are out of range" do
 		array = ['a']
-		expect { array.reorder(1, -2) }.should == nil
+		array.reorder(1, -2).should == nil
 	end
 
 	it "Should reorder the elements in an array with one element" do
