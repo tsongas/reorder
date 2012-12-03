@@ -1,6 +1,8 @@
 class Array
 	def reorder(from, to)
-puts "reorder(#{from}, #{to})"
+		debug = false
+		puts "reorder(#{from}, #{to})" if debug
+
 		if from < 0 - self.length or from > self.length - 1
 			# from index is out of range (indexes can be negative)
 			nil
@@ -14,70 +16,63 @@ puts "reorder(#{from}, #{to})"
 			# reorder array
 			if from < to
 
-puts "temp = self[#{to}]"
+				puts "temp = self[#{to}]" if debug
 				temp = self[to]
-#puts "temp: #{temp}"
 
 				index = from
 
-#puts "(#{from}..#{target}) do |index|"
 				(from..to).each do
-#puts "index: #{index}"
 
 					if index == from
 						# first iteration
-puts "first self[#{to}] = self[#{from}]"
+puts "first self[#{to}] = self[#{from}]" if debug
 						self[to] = self[from]
 
 					elsif index == to
 						# last iteration
-puts "self[#{index - 1}] = temp"
+puts "last self[#{index - 1}] = temp" if debug
 						self[index - 1] = temp
 
 					else
 						# intermediate iterations
-puts "subsequent self[#{index - 1}] = self[#{index}]"
+puts "intermediate self[#{index - 1}] = self[#{index}]" if debug
 						self[index - 1] = self[index]
 
 					end
 
 					index += 1
-#puts "self: #{self}"
 
 				end
 
 			else
 
-puts "temp = self[#{to}]"
+puts "temp = self[#{to}]" if debug
 				temp = self[to]
-#puts "temp: #{temp}"
 
 				index = from
 
-#puts "(#{from}..#{target}) do |index|"
-				(from..to).each do
-#puts "index: #{index}"
+				from.downto(to) do
 
 					if index == from
 						# first iteration
-puts "first self[#{to}] = self[#{from}]"
+puts "first self[#{to}] = self[#{from}]" if debug
 						self[to] = self[from]
 
 					elsif index == to
 						# last iteration
-puts "self[#{index - 1}] = temp"
-						self[index - 1] = temp
+puts "last self[#{index + 1}] = temp" if debug
+						self[index + 1] = temp
 
 					else
 						# intermediate iterations
-puts "subsequent self[#{index - 1}] = self[#{index}]"
-						self[index - 1] = self[index]
+puts "intermediate self[#{index + 1}] = self[#{index}]" if debug
+						self[index + 1] = self[index]
 
 					end
 
-					index += 1
-#puts "self: #{self}"
+					index -= 1
 
+				end
 
 			end
 			self
