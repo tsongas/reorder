@@ -1,25 +1,25 @@
 require 'reorder'
 
 describe "reorder" do
-	it "Should return nil if the source is out of range" do
+	it "Should return nil if 'from' is out of range" do
 		array = ['a']
 		array.reorder(1, 0).should == nil
 	end
-	it "Should return nil if the source is out of range" do
+	it "Should return nil if 'from' is out of range" do
 		array = ['a']
 		array.reorder(-2, 0).should == nil
 	end
 
-	it "Should return nil if the destination is out of range" do
+	it "Should return nil if 'to' is out of range" do
 		array = ['a']
 		array.reorder(0, 1).should == nil
 	end
-	it "Should return nil if the destination is out of range" do
+	it "Should return nil if 'to' is out of range" do
 		array = ['a']
 		array.reorder(0, -2).should == nil
 	end
 
-	it "Should return nil if the source and destination are out of range" do
+	it "Should return nil if 'from' and 'to' are out of range" do
 		array = ['a']
 		array.reorder(1, -2).should == nil
 	end
