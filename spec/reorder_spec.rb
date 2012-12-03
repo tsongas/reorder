@@ -27,7 +27,7 @@ describe "reorder" do
 		array.reorder(1, -2).should == nil
 	end
 
-	# one array element
+	# one array element, 'from' and 'to' must be identical
 	it "Should reorder(0, 0) the elements in an array with one element" do
 		array = ['a']
 		array.reorder(0, 0).should == ['a']
@@ -133,25 +133,124 @@ describe "reorder" do
 		array.reorder(-1, -2).should == ['a', 'c', 'b']
 	end
 
+	# four array elements, first to second
+	it "Should reorder(0, 1) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(0, 1).should == ['b', 'a', 'c', 'd']
+	end
+	it "Should reorder(-4, -3) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-4, -3).should == ['b', 'a', 'c', 'd']
+	end
+
+	# four array elements, first to third
+	it "Should reorder(0, 2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(0, 2).should == ['b', 'c', 'a', 'd']
+	end
+	it "Should reorder(-4, -2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-4, -2).should == ['b', 'c', 'a', 'd']
+	end
+
 	# four array elements, first to fourth
-	it "Should reorder(0, 3) the elements in an array with three elements" do
+	it "Should reorder(0, 3) the elements in an array with four elements" do
 		array = ['a', 'b', 'c', 'd']
 		array.reorder(0, 3).should == ['b', 'c', 'd', 'a']
 	end
-	it "Should reorder(-4, -1) the elements in an array with three elements" do
+	it "Should reorder(-4, -1) the elements in an array with four elements" do
 		array = ['a', 'b', 'c', 'd']
 		array.reorder(-4, -1).should == ['b', 'c', 'd', 'a']
 	end
 
+	# four array elements, second to first
+	it "Should reorder(1, 0) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(1, 0).should == ['b', 'a', 'c', 'd']
+	end
+	it "Should reorder(-3, -4) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-3, -4).should == ['b', 'a', 'c', 'd']
+	end
+
+	# four array elements, second to third
+	it "Should reorder(1, 2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(1, 2).should == ['a', 'c', 'b', 'd']
+	end
+	it "Should reorder(-3, -2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-3, -2).should == ['a', 'c', 'b', 'd']
+	end
+
+	# four array elements, second to fourth
+	it "Should reorder(1, 3) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(1, 3).should == ['a', 'c', 'd', 'b']
+	end
+	it "Should reorder(-3, -1) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-3, -1).should == ['a', 'c', 'd', 'b']
+	end
+
+	# four array elements, third to first
+	it "Should reorder(2, 0) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(2, 0).should == ['c', 'a', 'b', 'd']
+	end
+	it "Should reorder(-2, -4) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-2, -4).should == ['c', 'a', 'b', 'd']
+	end
+
+	# four array elements, third to second
+	it "Should reorder(2, 1) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(2, 1).should == ['a', 'c', 'b', 'd']
+	end
+	it "Should reorder(-2, -3) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-2, -3).should == ['a', 'c', 'b', 'd']
+	end
+
+	# four array elements, third to fourth
+	it "Should reorder(2, 3) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(2, 3).should == ['a', 'b', 'd', 'c']
+	end
+	it "Should reorder(-2, -1) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-2, -1).should == ['a', 'b', 'd', 'c']
+	end
+
 	# four array elements, fourth to first
-	it "Should reorder(3, 0) the elements in an array with three elements" do
+	it "Should reorder(3, 0) the elements in an array with four elements" do
 		array = ['a', 'b', 'c', 'd']
 		array.reorder(3, 0).should == ['d', 'a', 'b', 'c']
 	end
-	it "Should reorder(-1, -4) the elements in an array with three elements" do
+	it "Should reorder(-1, -4) the elements in an array with four elements" do
 		array = ['a', 'b', 'c', 'd']
 		array.reorder(-1, -4).should == ['d', 'a', 'b', 'c']
 	end
 
+	# four array elements, fourth to second
+	it "Should reorder(3, 1) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(3, 1).should == ['a', 'd', 'b', 'c']
+	end
+	it "Should reorder(-1, -3) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-1, -3).should == ['a', 'd', 'b', 'c']
+	end
+
+	# four array elements, fourth to third
+	it "Should reorder(3, 2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(3, 2).should == ['a', 'b', 'd', 'c']
+	end
+	it "Should reorder(-1, -2) the elements in an array with four elements" do
+		array = ['a', 'b', 'c', 'd']
+		array.reorder(-1, -2).should == ['a', 'b', 'd', 'c']
+	end
 
 end

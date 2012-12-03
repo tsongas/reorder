@@ -25,17 +25,17 @@ class Array
 
 					if index == from
 						# first iteration
-puts "first self[#{to}] = self[#{from}]" if debug
+						puts "first self[#{to}] = self[#{from}]" if debug
 						self[to] = self[from]
 
 					elsif index == to
 						# last iteration
-puts "last self[#{index - 1}] = temp" if debug
+						puts "last self[#{index - 1}] = temp" if debug
 						self[index - 1] = temp
 
 					else
 						# intermediate iterations
-puts "intermediate self[#{index - 1}] = self[#{index}]" if debug
+						puts "intermediate self[#{index - 1}] = self[#{index}]" if debug
 						self[index - 1] = self[index]
 
 					end
@@ -46,7 +46,7 @@ puts "intermediate self[#{index - 1}] = self[#{index}]" if debug
 
 			else
 
-puts "temp = self[#{to}]" if debug
+				puts "temp = self[#{to}]" if debug
 				temp = self[to]
 
 				index = from
@@ -55,17 +55,17 @@ puts "temp = self[#{to}]" if debug
 
 					if index == from
 						# first iteration
-puts "first self[#{to}] = self[#{from}]" if debug
+						puts "first self[#{to}] = self[#{from}]" if debug
 						self[to] = self[from]
 
 					elsif index == to
 						# last iteration
-puts "last self[#{index + 1}] = temp" if debug
+						puts "last self[#{index + 1}] = temp" if debug
 						self[index + 1] = temp
 
 					else
 						# intermediate iterations
-puts "intermediate self[#{index + 1}] = self[#{index}]" if debug
+						puts "intermediate self[#{index + 1}] = self[#{index}]" if debug
 						self[index + 1] = self[index]
 
 					end
