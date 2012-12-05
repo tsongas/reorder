@@ -1,4 +1,3 @@
-source "https://rubygems.org/gems/reorder"
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
