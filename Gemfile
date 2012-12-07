@@ -9,6 +9,8 @@ group :development do
   gem "cucumber"
 end
 
+# Add dependencies to test your gem here.
 group :test do
+  gem "rspec", "~> 2.8.0"
   gem "rake"
 end
