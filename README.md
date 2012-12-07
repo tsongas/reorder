@@ -1,3 +1,75 @@
+= reorder
 
+Reorder the elements in an array by moving an element from one index to another and adjusting the other elements accordingly.
 
-# Valid indices fall between -n and n-1, where n is the length of the array.
+== Installing reorder
+
+gem install reorder
+
+== Using reorder
+
+reorder(from, to) → ary
+
+Returns the array with element at index _from_ moved to index _to_. Other elements in the array are moved accordingly, maintaining their order.
+
+Valid _from_ and _to_ indices fall between -n and n-1, where n is the length of the array. Returns _nil_ if either index is out of range, and does nothing if the _from_ and _to_ indices are the same.
+
+For example:
+
+a = ["a", "b"]
+a.reorder(0, 1) #=> ["b", "a"]
+
+In this example, the element "a" at index 0 has been moved to index 1, and the element "b" at index 1 was moved to index 0 to make room for the element being moved to its position.
+
+== Notes for reorder
+
+To make room for the _from_ element being moved, Array#reorder slides other elements in the array to the left or right. One might reasonably ask, "which way does the _to_ element get moved?" In other words, will the _to_ element end up before or after the _from_ element? The answer is that the _to_ element always gets moved in the direction of the _from_ element's index, so the _to_ element can end up either before or after the _from_ element.
+
+For example:
+
+a = ["a", "b", "c"]
+a.reorder(0, 1) #=> ["b", "a", "c"]
+
+In this example, the _from_ element "a" was moved to the position of the _to_ element "b" and "b" was moved to the left, for the simple reason that there was no room on the right.
+
+Another example:
+
+a = ["a", "b", "c", "d"]
+a.reorder(3, 1) #=> ["a", "d", "b", "c"]
+
+Here the _from_ element "d" was moved to the position of the _to_ element "b" and this time both elements "b" and "c" were moved to the right to make room, as there was no room on the left. This explains why the _to_ element gets moved in the direction of the original location of the _from_ element.
+
+Note also that only the elements between and including _from_ and _to_ get moved.
+
+== Use case for reorder
+
+One use case for reorder is allowing a user to change the order of the items listed on a web page, perhaps using drag-and-drop. For example, the order of four items displayed on a page could be represented in an array:
+
+a = ["a", "b", "c", "d"]
+
+Suppose the user drags item "a" so it's between items "c" and "d" on the page. You might wonder, how should one call Array#reorder to update the array accordingly? The _from_ index is obviously 0, but what should you use as the _to_ index, 2 or 3?
+
+The answer is that to move an element between two others, the _to_ index when calling Array#reorder should be the index of whichever element is currently closest to the _from_ index. Continuing with our example:
+
+a.reorder(0, 2) #=> ["b", "c", "a", "d"]
+
+Here the element at index 0 has been moved between the elements that were at indexes 2 and 3 as intended. Here's another example:
+
+a = ["a", "b", "c", "d"]
+a.reorder(2, 1) #=> ["a", "c", "b", "d"]
+
+Here to move "c" to between "a" and "b" we had to use the higher index of "b" as the _to_ index because the index of "b" was closest to the _from_ index of the element we moved.
+
+== Contributing to reorder
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2012 Chris Tsongas. See LICENSE.txt for further details.
