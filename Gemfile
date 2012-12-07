@@ -8,3 +8,7 @@ group :development do
   gem "rspec", "~> 2.8.0"
   gem "cucumber"
 end
+
+group :test do
+  gem "rake"
+end
