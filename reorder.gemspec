@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|  
   s.name        = 'reorder'
-  s.version     = '0.0.1'
-  s.date        = '2012-11-13'
+  s.version     = '0.1.0'
+  s.date        = '2012-12-10'
   s.summary     = "Reorder Array"
   s.description = "Reorder the elements in an array by moving an element from one index to another and adjusting the other elements accordingly."
   s.authors     = ["Chris Tsongas"]
