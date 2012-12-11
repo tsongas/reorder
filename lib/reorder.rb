@@ -1,5 +1,11 @@
+require "ReorderArray.rb"
+
 class Array
+
+	include ReorderArray
+
 	def reorder(from, to)
+
 		# flag for debug output
 		debug = false
 		
@@ -16,14 +22,14 @@ class Array
 			# 'from' and 'to' indexes are the same so do nothing, return original array
 			self
 		else
+			# save 'to' element for last iteration of loop below
+			temp = self[to]
+			# if debug show statement saving 'to' element 
+			puts "temp = self[#{to}]" if debug
+
 			# reorder array
 			if from < to
 				# 'from' index is less than 'to' index so loop over increasing values
-
-				# save 'to' element for last iteration of loop below
-				temp = self[to]
-				# if debug show statement saving 'to' element 
-				puts "temp = self[#{to}]" if debug
 
 				# loop through increasing array indexes
 				(from..to).each_with_index do |index|
@@ -47,11 +53,6 @@ class Array
 			else
 				# 'to' index is less than 'from' index so loop over decreasing values
 
-				# save 'to' element for last iteration of loop below
-				temp = self[to]
-				# if debug show statement saving 'to' element 
-				puts "temp = self[#{to}]" if debug
-
 				# loop through decreasing array indexes
 				index = from
 				from.downto(to) do
@@ -66,9 +67,9 @@ class Array
 						# if debug show statement moving saved 'to' element
 						puts "last self[#{index + 1}] = temp" if debug
 					else
-						# intermediate iterations move index element one element to the left
+						# intermediate iterations move index element one element to the right
 						self[index + 1] = self[index]
-						# if debug show statement moving index element one element to the left
+						# if debug show statement moving index element one element to the right
 						puts "intermediate self[#{index + 1}] = self[#{index}]" if debug
 					end
 					index -= 1
