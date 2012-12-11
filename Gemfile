@@ -9,10 +9,12 @@ source 'https://rubygems.org'
 group :development do
   gem "rspec", "~> 2.8.0"
   gem "cucumber"
+  gem "rake"
 end
 
 # Dependencies for Travis to test this gem.
 group :test do
   gem "rspec", "~> 2.8.0"
   gem "cucumber"
+  gem "rake"
 end
