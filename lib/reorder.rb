@@ -1,8 +1,4 @@
-require "ReorderArray.rb"
-
 class Array
-
-	include ReorderArray
 
 	def reorder(from, to)
 
@@ -22,12 +18,13 @@ class Array
 			# 'from' and 'to' indexes are the same so do nothing, return original array
 			self
 		else
+			# reorder array
+
 			# save 'to' element for last iteration of loop below
 			temp = self[to]
 			# if debug show statement saving 'to' element 
 			puts "temp = self[#{to}]" if debug
 
-			# reorder array
 			if from < to
 				# 'from' index is less than 'to' index so loop over increasing values
 
