@@ -1,7 +1,22 @@
 class Array
 
 	def reorder(from, to)
+		if from < 0 - self.length or from > self.length - 1
+			# 'from' index is out of range (indexes can be negative)
+			raise "From index is out of range."
+		elsif to < 0 - self.length or to > self.length - 1
+			# 'to' index is out of range (indexes can be negative)
+			raise "To index is out of range."
+		elsif to == from
+			# 'from' and 'to' indexes are the same so do nothing, return self
+			self
+		else
+			# copy and return reordered array
+			self.clone.reorder!(from, to)
+		end
+	end
 
+	def reorder!(from, to)
 		# flag for debug output
 		debug = false
 		
@@ -10,13 +25,13 @@ class Array
 
 		if from < 0 - self.length or from > self.length - 1
 			# 'from' index is out of range (indexes can be negative)
-			nil
+			raise "From index is out of range."
 		elsif to < 0 - self.length or to > self.length - 1
 			# 'to' index is out of range (indexes can be negative)
-			nil
+			raise "To index is out of range."
 		elsif to == from
-			# 'from' and 'to' indexes are the same so do nothing, return original array
-			self
+			# 'from' and 'to' indexes are the same so do nothing, return nil
+			nil
 		else
 			# reorder array
 

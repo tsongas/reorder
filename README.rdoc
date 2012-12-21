@@ -10,9 +10,11 @@ gem install reorder
 
 reorder(from, to) → ary
 
-Returns the array with element at index _from_ moved to index _to_. Other elements in the array are moved accordingly, maintaining their order.
+Returns a copy of _self_ with the element at index _from_ moved to index _to_, and other elements moved accordingly to maintain their order.
 
-Valid _from_ and _to_ indices fall between -n and n-1, where n is the length of the array. Returns _nil_ if either index is out of range, and does nothing if the _from_ and _to_ indices are the same.
+reorder!(from, to) → new_ary or nil
+
+Returns a copy of _self_ with the element at index _from_ moved to index _to_, and other elements moved accordingly to maintain their order. Returns _nil_ if no changes were made because the _from_ and _to_ indices are the same, otherwise returns _ary_.
 
 For example:
 
