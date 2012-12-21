@@ -8,13 +8,13 @@ gem install reorder
 
 == Using reorder
 
-reorder(from, to) → ary
+reorder(from, to) → new_ary
 
 Returns a copy of _self_ with the element at index _from_ moved to index _to_, and other elements moved accordingly to maintain their order.
 
-reorder!(from, to) → new_ary or nil
+reorder!(from, to) → ary or nil
 
-Returns a copy of _self_ with the element at index _from_ moved to index _to_, and other elements moved accordingly to maintain their order. Returns _nil_ if no changes were made because the _from_ and _to_ indices are the same, otherwise returns _ary_.
+Returns _nil_ if no changes were made because the _from_ and _to_ indexes are the same, otherwise returns _ary_ with the element at index _from_ moved to index _to_, and other elements moved accordingly to maintain their order.
 
 For example:
 
