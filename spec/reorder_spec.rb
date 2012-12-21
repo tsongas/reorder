@@ -1,33 +1,38 @@
 require 'reorder'
 
 describe "reorder" do
-	# 'from' out of range
-	it "Should return nil if 'from' is out of range" do
+
+	# 'from' and 'to' out of range
+	it "Should raise an error if 'from' and 'to' are out of range" do
 		array = ['a']
-		array.reorder(1, 0).should == nil
+		expect { array.reorder(1, -2) }.to raise_error(RuntimeError, /From and to indexes are out of range./)
 	end
-	it "Should return nil if 'from' is out of range" do
+	it "Should raise an error if 'from' and 'to' are out of range" do
 		array = ['a']
-		array.reorder(-2, 0).should == nil
+		expect { array.reorder(-2, 1) }.to raise_error(RuntimeError, /From and to indexes are out of range./)
+	end
+
+	# 'from' out of range
+	it "Should raise an error if 'from' is out of range" do
+		array = ['a']
+		expect { array.reorder(1, 0) }.to raise_error(RuntimeError, /From index is out of range./)
+	end
+	it "Should raise an error if 'from' is out of range" do
+		array = ['a']
+		expect { array.reorder(-2, 0) }.to raise_error(RuntimeError, /From index is out of range./)
 	end
 
 	# 'to' out of range
-	it "Should return nil if 'to' is out of range" do
+	it "Should raise an error if 'to' is out of range" do
 		array = ['a']
-		array.reorder(0, 1).should == nil
+		expect { array.reorder(0, 1) }.to raise_error(RuntimeError, /To index is out of range./)
 	end
-	it "Should return nil if 'to' is out of range" do
+	it "Should raise an error if 'to' is out of range" do
 		array = ['a']
-		array.reorder(0, -2).should == nil
-	end
-
-	# 'from' and 'to' out of range
-	it "Should return nil if 'from' and 'to' are out of range" do
-		array = ['a']
-		array.reorder(1, -2).should == nil
+		expect { array.reorder(0, -2) }.to raise_error(RuntimeError, /To index is out of range./)
 	end
 
-	# one array element, 'from' and 'to' must be identical
+	# one array element, so 'from' and 'to' always identical
 	it "Should reorder(0, 0) the elements in an array with one element" do
 		array = ['a']
 		array.reorder(0, 0).should == ['a']
@@ -251,6 +256,50 @@ describe "reorder" do
 	it "Should reorder(-1, -2) the elements in an array with four elements" do
 		array = ['a', 'b', 'c', 'd']
 		array.reorder(-1, -2).should == ['a', 'b', 'd', 'c']
+	end
+
+end
+
+describe "reorder!" do
+
+	# 'from' and 'to' out of range
+	it "Should raise an error if 'from' and 'to' are out of range" do
+		array = ['a']
+		expect { array.reorder!(1, -2) }.to raise_error(RuntimeError, /From and to indexes are out of range./)
+	end
+	it "Should raise an error if 'from' and 'to' are out of range" do
+		array = ['a']
+		expect { array.reorder!(-2, 1) }.to raise_error(RuntimeError, /From and to indexes are out of range./)
+	end
+
+	# 'from' out of range
+	it "Should raise an error if 'from' is out of range" do
+		array = ['a']
+		expect { array.reorder!(1, 0) }.to raise_error(RuntimeError, /From index is out of range./)
+	end
+	it "Should raise an error if 'from' is out of range" do
+		array = ['a']
+		expect { array.reorder!(-2, 0) }.to raise_error(RuntimeError, /From index is out of range./)
+	end
+
+	# 'to' out of range
+	it "Should raise an error if 'to' is out of range" do
+		array = ['a']
+		expect { array.reorder!(0, 1) }.to raise_error(RuntimeError, /To index is out of range./)
+	end
+	it "Should raise an error if 'to' is out of range" do
+		array = ['a']
+		expect { array.reorder!(0, -2) }.to raise_error(RuntimeError, /To index is out of range./)
+	end
+
+	# one array element, so 'from' and 'to' always identical
+	it "Should reorder(0, 0) the elements in an array with one element" do
+		array = ['a']
+		array.reorder!(0, 0).should == nil
+	end
+	it "Should reorder(-1, -1) the elements in an array with one element" do
+		array = ['a']
+		array.reorder!(-1, -1).should == nil
 	end
 
 end

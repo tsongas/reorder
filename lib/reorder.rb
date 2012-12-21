@@ -1,7 +1,10 @@
 class Array
 
 	def reorder(from, to)
-		if from < 0 - self.length or from > self.length - 1
+		if ((from < 0 - self.length or from > self.length - 1) and (to < 0 - self.length or to > self.length - 1))
+			# 'from' and 'to' indexes are out of range (indexes can be negative)
+			raise "From and to indexes are out of range."
+		elsif from < 0 - self.length or from > self.length - 1
 			# 'from' index is out of range (indexes can be negative)
 			raise "From index is out of range."
 		elsif to < 0 - self.length or to > self.length - 1
@@ -23,7 +26,10 @@ class Array
 		# if debug show arguments passed to function
 		puts "reorder(#{from}, #{to})" if debug
 
-		if from < 0 - self.length or from > self.length - 1
+		if ((from < 0 - self.length or from > self.length - 1) and (to < 0 - self.length or to > self.length - 1))
+			# 'from' and 'to' indexes are out of range (indexes can be negative)
+			raise "From and to indexes are out of range."
+		elsif from < 0 - self.length or from > self.length - 1
 			# 'from' index is out of range (indexes can be negative)
 			raise "From index is out of range."
 		elsif to < 0 - self.length or to > self.length - 1
